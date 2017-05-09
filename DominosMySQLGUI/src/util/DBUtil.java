@@ -1,7 +1,6 @@
 package util;
 
 import java.sql.*;
-import java.sql.ResultSet;
 import com.sun.rowset.CachedRowSetImpl;
 
 public class DBUtil {
@@ -107,6 +106,11 @@ public class DBUtil {
 			System.out.println("Error on executing update on the database: " + e);
 			e.printStackTrace();
 			throw e;
+		}finally{
+			if (stmt != null){
+				stmt.close();
+			}
+			dbDisconnect();
 		}
 	}
 	
