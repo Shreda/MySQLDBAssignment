@@ -95,9 +95,19 @@ public class DBUtil {
 	/**************************************************************************
 	 * Static method. Accepts SQL update as String. Usage: Parse SQL from the
 	 * DAO to here and we handle database operations here.
+	 * @throws ClassNotFoundException 
 	 **************************************************************************/
-	public static void executeUpdate(String update) throws SQLException{
-		//TODO
+	public static void executeUpdate(String update) throws SQLException, ClassNotFoundException{
+		PreparedStatement stmt = null;
+		try{
+			dbConnect();
+			stmt = con.prepareStatement(update);
+			stmt.executeUpdate();
+		}catch(SQLException e ){
+			System.out.println("Error on executing update on the database: " + e);
+			e.printStackTrace();
+			throw e;
+		}
 	}
 	
 }
