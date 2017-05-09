@@ -30,19 +30,21 @@ public class CustomerDAO {
 
 	/*************************************************************************
 	 * SELECT Multiple customers from the database and create multiple objects
+	 * @throws ClassNotFoundException 
+	 * @throws SQLException 
 	 *************************************************************************/
-	public static ObservableList<Customer> searchCustomers(){
+	public static ObservableList<Customer> searchCustomers() throws ClassNotFoundException, SQLException{
 		String query = "SELECT * FROM customers";
 		try{
 			//run query on the database
 			ResultSet rs = DBUtil.executeQuery(query);
 			ObservableList<Customer> customerList = getCustomerListFromRs(rs);
+			return customerList;
 		}catch(SQLException e){
 			System.out.println("Error on executing " + query + " on database " + e);
 			e.printStackTrace();
 			throw e;
 		}
-		return null;
 	}
 
 	private static ObservableList<Customer> getCustomerListFromRs(ResultSet rs) throws SQLException {

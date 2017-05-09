@@ -6,10 +6,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="-1.0" prefWidth="-1.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+<VBox prefHeight="-1.0" prefWidth="-1.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.CustomerLayoutController">
   <!-- TODO Add Nodes -->
   <children>
-    <TableView maxWidth="-Infinity" prefHeight="200.0" prefWidth="527.0">
+    <TableView fx:id="customerTable" maxWidth="-Infinity" prefHeight="200.0" prefWidth="527.0">
       <columns>
         <TableColumn minWidth="50.0" prefWidth="75.0" text="customerID" fx:id="customerIDColumn" />
         <TableColumn minWidth="50.0" prefWidth="150.0" text="customerEmail" fx:id="customerEmailColumn" />

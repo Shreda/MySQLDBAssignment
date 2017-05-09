@@ -10,7 +10,7 @@ import model.CustomerDAO;
 
 public class CustomerLayoutController {
 	@FXML
-	private TableView<Customer> customerTable;
+	private TableView customerTable;
 	@FXML
 	private TableColumn<Customer, Integer> customerIDColumn;
 	@FXML
@@ -21,7 +21,7 @@ public class CustomerLayoutController {
 	private TableColumn<Customer, String> customerPhoneColumn;
 
 	@FXML
-	private void searchEmployees() throws SQLException {
+	private void searchEmployees() throws SQLException, ClassNotFoundException {
 		ObservableList cList = CustomerDAO.searchCustomers();
 		populateTable(cList);
 	}
@@ -34,7 +34,7 @@ public class CustomerLayoutController {
 	// we set which field of the Customer objects the TableColumns should use as
 	// their data:
 	@FXML
-	private void initialize() throws SQLException {
+	private void initialize() throws SQLException, ClassNotFoundException {
 		customerIDColumn.setCellValueFactory(cellData -> cellData.getValue().customerIDProperty().asObject());
 		customerEmailColumn.setCellValueFactory(cellData -> cellData.getValue().customerEmailProperty());
 		customerPasswordColumn.setCellValueFactory(cellData -> cellData.getValue().customerPasswordProperty());
