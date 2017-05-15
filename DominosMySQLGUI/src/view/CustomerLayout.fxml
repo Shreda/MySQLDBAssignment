@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="-1.0" prefWidth="-1.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.CustomerLayoutController">
+<VBox alignment="CENTER" prefHeight="-1.0" prefWidth="-1.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.CustomerLayoutController">
   <!-- TODO Add Nodes -->
   <children>
     <TableView fx:id="customerTable" maxWidth="-Infinity" prefHeight="200.0" prefWidth="527.0">
