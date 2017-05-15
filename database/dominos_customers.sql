@@ -39,7 +39,7 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-INSERT INTO `customers` VALUES (1,'test@test.com','password',NULL),(3,'lachlan@pornhub.com','lachlanspass',NULL),(4,'danielmoore@MrLims.com','verysecurepassword',NULL),(5,'cameron@bigdong.com','A5ecur3Pa55w0rd',NULL),(6,'MrLim@Audi.rev','audi1234',NULL);
+INSERT INTO `customers` VALUES (1,'test@test.com','password',NULL),(3,'lachlan@test.com','lachlanspass',NULL),(4,'danielmoore@MrLims.com','verysecurepassword',NULL),(5,'cameron@bigpond.com','A5ecur3Pa55w0rd',NULL),(6,'MrLim@Audi.rev','audi1234',NULL);
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
