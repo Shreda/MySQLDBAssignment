@@ -33,6 +33,9 @@ public class Customer {
 	public int getCustomerID(){
 		return customerID.get();
 	}
+	public String getCustomerIDString(){
+		return Integer.toString(customerID.get());
+	}
 	
 	public void setCustomerID(int customerID){
 		this.customerID.set(customerID);

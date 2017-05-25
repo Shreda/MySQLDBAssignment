@@ -11,8 +11,10 @@ public class CustomerDAO {
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 ************************************************/
-	public static Customer searchCustomer(String customerID) throws SQLException, ClassNotFoundException {
-		String query = "SELECT * FROM customers WHERE customerID = " + customerID;
+	public static Customer searchCustomer(String searchParam) throws SQLException, ClassNotFoundException {
+		String query = "SELECT * FROM customers WHERE customerID LIKE '%" + searchParam + "%'"
+				+ "OR customerEmail LIKE '%" + searchParam + "%'"
+				+ "OR customerPhone LIKE '%" + searchParam + "%'";
 		try {
 			// run query on the database
 			ResultSet rs = DBUtil.executeQuery(query);
@@ -42,6 +44,25 @@ public class CustomerDAO {
 			return customerList;
 		}catch(SQLException e){
 			System.out.println("Error on executing " + query + " on database " + e);
+			e.printStackTrace();
+			throw e;
+		}
+	}
+	/*
+	 * Used to update customers details
+	 */
+	public static void updateCustomer(String customerIDParam, String customerEmailParam, String customerPasswordParam, String customerPhoneParam) throws SQLException, ClassNotFoundException{
+		/*String update = "UPDATE customers SET customerEmail = " + customerEmailParam + "," +
+				"SET customerPassword = " + customerPasswordParam + "," + 
+				" SET customerPhone = " + customerPhoneParam + " WHERE customerID = " + customerIDParam + "";
+				*/
+		String update = "UPDATE customers SET customerEmail = ?, customerPassword";
+		
+		try{
+			//run update on the database
+			DBUtil.executeUpdate(update);
+		}catch(SQLException e){
+			System.out.println("Error on executing update: " + e);
 			e.printStackTrace();
 			throw e;
 		}
