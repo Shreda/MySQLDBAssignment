@@ -11,16 +11,14 @@ public class CustomerDAO {
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 ************************************************/
-	public static Customer searchCustomer(String searchParam) throws SQLException, ClassNotFoundException {
+	public static ObservableList<Customer> searchCustomer(String searchParam) throws SQLException, ClassNotFoundException {
 		String query = "SELECT * FROM customers WHERE customerID LIKE '%" + searchParam + "%'"
 				+ "OR customerEmail LIKE '%" + searchParam + "%'"
 				+ "OR customerPhone LIKE '%" + searchParam + "%'";
 		try {
 			// run query on the database
 			ResultSet rs = DBUtil.executeQuery(query);
-
-			// send result set to getCustomerFromRS()
-			Customer c = getCustomerFromRs(rs);
+			ObservableList<Customer> c = getCustomerListFromRs(rs);
 			return c;
 		} catch (SQLException e) {
 			System.out.println("Error on executing " + query + " on database: " + e);
@@ -52,7 +50,6 @@ public class CustomerDAO {
 	 * Used to update customers details
 	 */
 	public static void updateCustomer(String customerIDParam, String customerEmailParam, String customerPasswordParam, String customerPhoneParam) throws SQLException, ClassNotFoundException{
-		
 		String update = "UPDATE customers SET customerEmail = '" + customerEmailParam +
 				"', customerPassword = '" + customerPasswordParam +
 				"', customerPhone = '" + customerPhoneParam +

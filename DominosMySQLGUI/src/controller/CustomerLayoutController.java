@@ -35,11 +35,9 @@ public class CustomerLayoutController {
 	@FXML
 	private void searchCustomer() throws SQLException, ClassNotFoundException {
 		try{
-			Customer c = CustomerDAO.searchCustomer(customerSearchField.getText());
-			if (c != null){
-				ObservableList<Customer> cList = FXCollections.observableArrayList();
-				cList.add(c);
-				populateTable(cList);
+			ObservableList<Customer> c = CustomerDAO.searchCustomer(customerSearchField.getText());
+			if (c != null){;
+				populateTable(c);
 			}
 			
 			
