@@ -40,6 +40,7 @@ public class CustomerDialogController {
 			e.printStackTrace();
 			throw e;
 		}
+		dialogStage.close();
 		
 	}
 	

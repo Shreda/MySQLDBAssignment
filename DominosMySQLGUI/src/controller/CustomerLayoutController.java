@@ -55,11 +55,17 @@ public class CustomerLayoutController {
 	}
 	
 	@FXML
-	private void handleEdit(){
+	private void handleEdit() throws ClassNotFoundException{
 		Customer c = customerTable.getSelectionModel().getSelectedItem();
-		if(c!=null){
-			main.initCustomerDialog(c);
+		try{
+			if(c!=null){
+				main.initCustomerDialog(c);
+				searchCustomers();
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
 		}
+
 		
 	}
 
@@ -78,7 +84,10 @@ public class CustomerLayoutController {
 		customerPhoneColumn.setCellValueFactory(cellData -> cellData.getValue().customerPhoneProperty());
 		searchCustomers();
 	}
-
+	
+	/*
+	 * We set a reference back to the main app so we can call methods within it.
+	 */
 	public void setMain(Main main){
 		this.main = main;
 	}

@@ -52,11 +52,11 @@ public class CustomerDAO {
 	 * Used to update customers details
 	 */
 	public static void updateCustomer(String customerIDParam, String customerEmailParam, String customerPasswordParam, String customerPhoneParam) throws SQLException, ClassNotFoundException{
-		/*String update = "UPDATE customers SET customerEmail = " + customerEmailParam + "," +
-				"SET customerPassword = " + customerPasswordParam + "," + 
-				" SET customerPhone = " + customerPhoneParam + " WHERE customerID = " + customerIDParam + "";
-				*/
-		String update = "UPDATE customers SET customerEmail = ?, customerPassword";
+		
+		String update = "UPDATE customers SET customerEmail = '" + customerEmailParam +
+				"', customerPassword = '" + customerPasswordParam +
+				"', customerPhone = '" + customerPhoneParam +
+				"' WHERE customerID = " + customerIDParam;
 		
 		try{
 			//run update on the database
