@@ -5,10 +5,11 @@ import com.sun.rowset.CachedRowSetImpl;
 
 public class DBUtil {
 
-	private static final String CONNECTION_STRING = "jdbc:mysql://localhost:3306/dominos";
-	private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	private static final String SQL_USER = "root";
-	private static final String SQL_PASS = "root";
+	//private static final String CONNECTION_STRING = "jdbc:mysql://localhost:3306/dominos";
+	//private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+	private static final String CONNECTION_STRING = "jdbc:sqlite:testdb.db";
+	//private static final String SQL_USER = "root";
+	//private static final String SQL_PASS = "root";
 
 	private static Connection con = null;
 
@@ -20,6 +21,7 @@ public class DBUtil {
 	 * @throws SQLException,
 	 *             ClassNotFoundException
 	 ************************************************************************************/
+	/*
 	public static void dbConnect() throws ClassNotFoundException, SQLException {
 		// set the JDBC driver to be used
 		try {
@@ -34,6 +36,16 @@ public class DBUtil {
 		try {
 			con = DriverManager.getConnection(CONNECTION_STRING, SQL_USER, SQL_PASS);
 		} catch (SQLException e) {
+			System.out.println("Error on establishing MySQL connection " + CONNECTION_STRING + ": " + e);
+			e.printStackTrace();
+			throw e;
+		}
+	}
+	*/
+	public static void dbConnect() throws ClassNotFoundException, SQLException {
+		try{
+			con = DriverManager.getConnection(CONNECTION_STRING);
+		}catch(SQLException e){
 			System.out.println("Error on establishing MySQL connection " + CONNECTION_STRING + ": " + e);
 			e.printStackTrace();
 			throw e;
