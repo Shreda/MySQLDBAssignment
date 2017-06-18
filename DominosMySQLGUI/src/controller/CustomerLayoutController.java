@@ -63,9 +63,8 @@ public class CustomerLayoutController {
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
-
-		
 	}
+	
 
 	private void populateTable(ObservableList<Customer> cList) {
 		customerTable.setItems(cList);
