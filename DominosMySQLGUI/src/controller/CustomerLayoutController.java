@@ -53,14 +53,30 @@ public class CustomerLayoutController {
 	}
 	
 	@FXML
-	private void handleEdit() throws ClassNotFoundException{
+	private void handleEdit() throws ClassNotFoundException, SQLException{
 		Customer c = customerTable.getSelectionModel().getSelectedItem();
-		try{
-			if(c!=null){
-				main.initCustomerDialog(c);
-				searchCustomers();
+		if(c!=null){
+			//main.initCustomerDialog(c);
+			boolean okClicked = main.initCustomerDialog(c);
+			if (okClicked){
+				CustomerDAO.updateCustomer(c.getCustomerIDString(), c.getCustomerEmail(), c.getCustomerPassword(), c.getCustomerPhone());
 			}
-		}catch(SQLException e){
+			//System.out.println(c.getCustomerEmail());
+			//System.out.println(c.getCustomerPassword());
+			//searchCustomers();
+		}
+	}
+	
+	@FXML
+	private void handleAdd() throws ClassNotFoundException {
+		try {
+			Customer c = new Customer();
+			boolean okClicked = main.initCustomerDialog(c);
+			if (okClicked){
+				CustomerDAO.newCustomer(c.getCustomerEmail(), c.getCustomerPassword(), c.getCustomerPhone());
+				searchCustomer();
+			}
+		}catch(Exception e){
 			e.printStackTrace();
 		}
 	}

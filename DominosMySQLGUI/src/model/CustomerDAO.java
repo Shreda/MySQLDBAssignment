@@ -64,6 +64,20 @@ public class CustomerDAO {
 			throw e;
 		}
 	}
+	
+	public static void newCustomer(String customerEmailParam, String customerPasswordParam, String customerPhoneParam) throws ClassNotFoundException, SQLException{
+		
+		String insert = "INSERT INTO customers (customerEmail, customerPassword, customerPhone) VALUES ('"
+		+ customerEmailParam + "', '" + customerPasswordParam + "', '" + customerPhoneParam + "')";
+		
+		try {
+			DBUtil.executeUpdate(insert);
+		}catch(SQLException e){
+			System.out.println("Error on inserting new customer " + e);
+			e.printStackTrace();
+			throw e;
+		}
+	}
 
 	private static ObservableList<Customer> getCustomerListFromRs(ResultSet rs) throws SQLException {
 		ObservableList<Customer> cList = FXCollections.observableArrayList();
@@ -102,4 +116,6 @@ public class CustomerDAO {
 		}
 		return c;
 	}
+	
+	
 }

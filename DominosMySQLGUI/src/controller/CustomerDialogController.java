@@ -18,6 +18,7 @@ public class CustomerDialogController {
 	
 	private Customer customer;
 	private Stage dialogStage;
+	private boolean okClicked = false;
 	
 	public void setCustomer(Customer c){
 		this.customer = c;
@@ -33,6 +34,7 @@ public class CustomerDialogController {
 	
 	@FXML
 	private void handleOK() throws ClassNotFoundException, SQLException{
+		/*
 		try{
 			CustomerDAO.updateCustomer(customer.getCustomerIDString(), emailField.getText(), passwordField.getText(), phoneField.getText());
 		}catch(SQLException e){
@@ -41,12 +43,21 @@ public class CustomerDialogController {
 			throw e;
 		}
 		dialogStage.close();
-		
+		*/
+		this.customer.setCustomerEmail(emailField.getText());
+		this.customer.setCustomerPassword(passwordField.getText());
+		this.customer.setCustomerPhone(phoneField.getText());
+		okClicked = true;
 	}
 	
 	@FXML
 	private void handleCancel(){
 		dialogStage.close();
+	}
+	
+	
+	public boolean isOkClicked(){
+		return okClicked;
 	}
 
 

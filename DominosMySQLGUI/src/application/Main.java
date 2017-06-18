@@ -60,7 +60,7 @@ public class Main extends Application {
 		}
 	}
 	
-	public void initCustomerDialog(Customer c){
+	public boolean initCustomerDialog(Customer c){
 		String location = "/view/CustomerDialog.fxml";
 		try{
 			FXMLLoader loader = new FXMLLoader();
@@ -76,11 +76,15 @@ public class Main extends Application {
 			controller.setCustomer(c);
 			controller.setDialogStage(dialogStage);
 			dialogStage.showAndWait();
+			return controller.isOkClicked()
+			;
 			
 		}catch(IOException e){
 			System.out.println("Error on loading " + location + ": " + e);
 			e.printStackTrace();
 		}
+		return false;
+		
 
 	}
 
