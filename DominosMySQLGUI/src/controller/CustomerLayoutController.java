@@ -67,14 +67,15 @@ public class CustomerLayoutController {
 		}
 	}
 	
+	//Handle user clicking add button
 	@FXML
 	private void handleAdd() throws ClassNotFoundException {
 		try {
-			Customer c = new Customer();
-			boolean okClicked = main.initCustomerDialog(c);
+			Customer c = new Customer();//Create new customer to be added
+			boolean okClicked = main.initCustomerDialog(c);//open customer add/edit dialog
 			if (okClicked){
 				CustomerDAO.newCustomer(c.getCustomerEmail(), c.getCustomerPassword(), c.getCustomerPhone());
-				searchCustomer();
+				searchCustomer();//refresh table from DB
 			}
 		}catch(Exception e){
 			e.printStackTrace();

@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Customer;
-import model.CustomerDAO;
+//import model.CustomerDAO;
 
 public class CustomerDialogController {
 	@FXML
@@ -48,6 +48,7 @@ public class CustomerDialogController {
 		this.customer.setCustomerPassword(passwordField.getText());
 		this.customer.setCustomerPhone(phoneField.getText());
 		okClicked = true;
+		dialogStage.close();
 	}
 	
 	@FXML

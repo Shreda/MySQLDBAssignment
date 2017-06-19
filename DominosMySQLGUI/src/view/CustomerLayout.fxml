@@ -20,7 +20,7 @@
             <Button mnemonicParsing="false" onAction="#handleAdd" text="Add" />
       </children>
     </HBox>
-    <TableView fx:id="customerTable" maxWidth="-Infinity" prefHeight="200.0" prefWidth="527.0" VBox.vgrow="ALWAYS">
+    <TableView fx:id="customerTable" VBox.vgrow="ALWAYS">
       <columns>
         <TableColumn fx:id="customerIDColumn" minWidth="50.0" prefWidth="75.0" text="customerID" />
         <TableColumn fx:id="customerEmailColumn" minWidth="50.0" prefWidth="150.0" text="customerEmail" />
